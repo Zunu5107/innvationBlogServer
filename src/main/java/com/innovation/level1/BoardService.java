@@ -13,7 +13,7 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public Board createBoard(Board board) throws RuntimeException {
+    public Board createBoard(Board board) {
         validateBoardData(board);
 
         return boardRepository.save(board);
