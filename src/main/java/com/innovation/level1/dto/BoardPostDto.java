@@ -1,4 +1,4 @@
-package com.innovation.level1;
+package com.innovation.level1.dto;
 
 import lombok.Getter;
 import lombok.Setter;

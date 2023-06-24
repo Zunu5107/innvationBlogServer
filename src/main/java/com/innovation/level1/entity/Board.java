@@ -1,5 +1,6 @@
-package com.innovation.level1;
+package com.innovation.level1.entity;
 
+import com.innovation.level1.audit.BaseTime;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

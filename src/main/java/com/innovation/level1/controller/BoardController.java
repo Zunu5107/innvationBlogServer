@@ -1,5 +1,12 @@
-package com.innovation.level1;
+package com.innovation.level1.controller;
 
+import com.innovation.level1.dto.BoardDeleteDto;
+import com.innovation.level1.dto.BoardPatchDto;
+import com.innovation.level1.dto.BoardPostDto;
+import com.innovation.level1.dto.BoardResponseDto;
+import com.innovation.level1.entity.Board;
+import com.innovation.level1.mapper.BoardMapper;
+import com.innovation.level1.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

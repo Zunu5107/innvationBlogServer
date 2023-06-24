@@ -1,4 +1,4 @@
-package com.innovation.level1;
+package com.innovation.level1.audit;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

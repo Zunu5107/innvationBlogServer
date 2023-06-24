@@ -1,5 +1,7 @@
-package com.innovation.level1;
+package com.innovation.level1.service;
 
+import com.innovation.level1.entity.Board;
+import com.innovation.level1.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

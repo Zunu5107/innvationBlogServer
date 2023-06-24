@@ -1,13 +1,16 @@
-package com.innovation.level1;
+package com.innovation.level1.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
-public class BoardPatchDto {
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+public class BoardResponseDto {
     private long boardId;
     private String title;
     private String username;
-    private String password;
     private String content;
+    private String createdAt;
 }
