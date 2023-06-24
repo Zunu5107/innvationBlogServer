@@ -1,6 +1,11 @@
 package com.innovation.level1.service;
 
+import com.innovation.level1.dto.BoardDeleteDto;
+import com.innovation.level1.dto.BoardPatchDto;
+import com.innovation.level1.dto.BoardPostDto;
+import com.innovation.level1.dto.BoardResponseDto;
 import com.innovation.level1.entity.Board;
+import com.innovation.level1.mapper.BoardMapper;
 import com.innovation.level1.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,12 +17,15 @@ import java.util.*;
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
+    private final BoardMapper boardMapper;
 
-    public Board createBoard(Board board) {
+    public Board createBoard(BoardPostDto boardPostDto) {
+        Board board = boardMapper.BoardPostDtoToBoard(boardPostDto);
         validateBoardData(board);
 
         return boardRepository.save(board);
     }
+
 
 
     public Board findBoard(long boardId) {
@@ -31,7 +39,8 @@ public class BoardService {
         return boardRepository.findAllByOrderByCreatedAtDesc();
     }
 
-    public Board updateBoard(Board board) {
+    public Board updateBoard(long boardId, BoardPatchDto boardPatchDto) {
+        Board board = boardMapper.BoardPatchDtoToBoard(boardPatchDto);
         Board findBoard = findVerifiedBoard(board.getBoardId());
 
         String inputPassword = board.getPassword();
@@ -47,13 +56,24 @@ public class BoardService {
     }
 
 
-    public void deleteBoard(long boardId, String inputPassword) {
+    public void deleteBoard(long boardId, BoardDeleteDto boardDeleteDto) {
         Board findBoard = findVerifiedBoard(boardId);
         String password = findBoard.getPassword();
+        String inputPassword = boardDeleteDto.getPassword();
 
         comparePasswords(password, inputPassword);
 
         boardRepository.delete(findBoard);
+    }
+
+    public BoardResponseDto entityToResponseDto(Board board) {
+
+        return boardMapper.BoardToBoardResponseDto(board);
+    }
+
+    public List<BoardResponseDto> entityListToResponseDtoList(List<Board> boards) {
+
+        return boardMapper.BoardsToBoardResponseDtos(boards);
     }
 
 

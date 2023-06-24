@@ -18,15 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
-    private final BoardMapper boardMapper;
-
 
     @PostMapping("/board")
     public ResponseEntity<?> postBoard(@RequestBody BoardPostDto boardPostDto) {
-        Board board = boardMapper.BoardPostDtoToBoard(boardPostDto);
-        Board savedBoard = boardService.createBoard(board);
+        Board savedBoard = boardService.createBoard(boardPostDto);
 
-        BoardResponseDto response = boardMapper.BoardToBoardResponseDto(savedBoard);
+        BoardResponseDto response = boardService.entityToResponseDto(savedBoard);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -35,7 +32,7 @@ public class BoardController {
     public ResponseEntity<?> getBoard(@PathVariable long boardId) {
         Board board = boardService.findBoard(boardId);
 
-        BoardResponseDto response = boardMapper.BoardToBoardResponseDto(board);
+        BoardResponseDto response = boardService.entityToResponseDto(board);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -44,18 +41,17 @@ public class BoardController {
     public ResponseEntity<?> getAllBoards() {
         List<Board> boards = boardService.findAllBoards();
 
-        List<BoardResponseDto> responses = boardMapper.BoardsToBoardResponseDtos(boards);
+        List<BoardResponseDto> responses = boardService.entityListToResponseDtoList(boards);
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 
     @PatchMapping("/board/{boardId}")
     public ResponseEntity<?> patchBoard(@PathVariable long boardId,
                                         @RequestBody BoardPatchDto boardPatchDto) {
-        boardPatchDto.setBoardId(boardId);
-        Board board = boardMapper.BoardPatchDtoToBoard(boardPatchDto);
-        Board patchedcBoard = boardService.updateBoard(board);
 
-        BoardResponseDto response = boardMapper.BoardToBoardResponseDto(patchedcBoard);
+        Board patchedcBoard = boardService.updateBoard(boardId, boardPatchDto);
+
+        BoardResponseDto response = boardService.entityToResponseDto(patchedcBoard);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -64,7 +60,7 @@ public class BoardController {
                                          @RequestBody BoardDeleteDto boardDeleteDto) {
 
         String password = boardDeleteDto.getPassword();
-        boardService.deleteBoard(boardId, password);
+        boardService.deleteBoard(boardId, boardDeleteDto);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
