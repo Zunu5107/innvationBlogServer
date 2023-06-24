@@ -2,18 +2,16 @@ package com.innovation.level1.service;
 
 import com.innovation.level1.entity.Board;
 import com.innovation.level1.repository.BoardRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
-
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
 
     public Board createBoard(Board board) {
         validateBoardData(board);

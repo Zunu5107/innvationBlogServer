@@ -7,6 +7,7 @@ import com.innovation.level1.dto.BoardResponseDto;
 import com.innovation.level1.entity.Board;
 import com.innovation.level1.mapper.BoardMapper;
 import com.innovation.level1.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
     private final BoardMapper boardMapper;
 
-    public BoardController(BoardService boardService, BoardMapper boardMapper) {
-        this.boardService = boardService;
-        this.boardMapper = boardMapper;
-    }
 
     @PostMapping("/board")
     public ResponseEntity<?> postBoard(@RequestBody BoardPostDto boardPostDto) {
