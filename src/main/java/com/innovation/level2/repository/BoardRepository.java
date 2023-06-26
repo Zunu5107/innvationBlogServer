@@ -1,6 +1,6 @@
-package com.innovation.level1.repository;
+package com.innovation.level2.repository;
 
-import com.innovation.level1.entity.Board;
+import com.innovation.level2.entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

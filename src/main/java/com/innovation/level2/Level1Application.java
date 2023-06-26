@@ -1,4 +1,4 @@
-package com.innovation.level1;
+package com.innovation.level2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

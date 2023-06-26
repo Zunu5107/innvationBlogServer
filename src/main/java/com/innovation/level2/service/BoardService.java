@@ -1,12 +1,12 @@
-package com.innovation.level1.service;
+package com.innovation.level2.service;
 
-import com.innovation.level1.dto.BoardDeleteDto;
-import com.innovation.level1.dto.BoardPatchDto;
-import com.innovation.level1.dto.BoardPostDto;
-import com.innovation.level1.dto.BoardResponseDto;
-import com.innovation.level1.entity.Board;
-import com.innovation.level1.mapper.BoardMapper;
-import com.innovation.level1.repository.BoardRepository;
+import com.innovation.level2.dto.BoardDeleteDto;
+import com.innovation.level2.dto.BoardPatchDto;
+import com.innovation.level2.dto.BoardPostDto;
+import com.innovation.level2.dto.BoardResponseDto;
+import com.innovation.level2.entity.Board;
+import com.innovation.level2.mapper.BoardMapper;
+import com.innovation.level2.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

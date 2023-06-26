@@ -1,9 +1,9 @@
-package com.innovation.level1.mapper;
+package com.innovation.level2.mapper;
 
-import com.innovation.level1.dto.BoardPatchDto;
-import com.innovation.level1.dto.BoardPostDto;
-import com.innovation.level1.dto.BoardResponseDto;
-import com.innovation.level1.entity.Board;
+import com.innovation.level2.dto.BoardPatchDto;
+import com.innovation.level2.dto.BoardPostDto;
+import com.innovation.level2.dto.BoardResponseDto;
+import com.innovation.level2.entity.Board;
 import org.mapstruct.Mapper;
 
 import java.util.List;
